@@ -1,6 +1,11 @@
 import {Link} from "react-router-dom";
+import {useAuth} from "../context/AuthContext.tsx";
 
-export default function header() {
+export default function Header() {
+
+
+    const { user, logout } = useAuth();
+
     return (
         <>
             <div className="navbar bg-base-100">
@@ -38,7 +43,13 @@ export default function header() {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
+                        {user ? (
+                            <>
+                                <li>
+                                    <Link to="/users">Utilisateurs</Link>
+                                </li>
+                            </>
+                        ) : null}
                         <li>
                             <details>
                                 <summary>Parent</summary>
@@ -52,9 +63,19 @@ export default function header() {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-primary mr-3">Connexion</a>
-                    <Link to="/inscription" className="btn btn-secondary">Inscription</Link>
+                    {user ? (
+                        <>
+                            <span className="mr-3">Bienvenu, {user.email}</span>
+                            <button onClick={logout} className="btn btn-secondary">Déconnexion</button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/connexion" className="btn btn-primary mr-3">Connexion</Link>
+                            <Link to="/inscription" className="btn btn-secondary">Inscription</Link>
+                        </>
+                    )}
                 </div>
+
             </div>
         </>
     )
