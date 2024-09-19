@@ -7,6 +7,8 @@ import Login from "./pages/Login.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
 import {Users} from "./pages/user/Users.tsx";
 import PrivateRoute from "./components/PrivateRoute.tsx";
+import Post from "./pages/post/Post.tsx";
+import AddPost from "./pages/post/AddPost.tsx";
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
                                 <Route path="/" element={<Home/>} />
                                 <Route element={<PrivateRoute/>}>
                                     <Route path="/users" element={<Users/>} />
+                                    <Route path="/posts" element={<Post/>} />
+                                    <Route path="/posts/add" element={<AddPost/>} />
                                 </Route>
                                 <Route path="/inscription" element={<Register />} />
                                 <Route path="/connexion" element={<Login />} />

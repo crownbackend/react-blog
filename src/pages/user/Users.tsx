@@ -13,8 +13,6 @@ export function Users() {
         "Authorization": "Bearer " + info.token
     }
 
-    console.log(headers)
-
     useEffect(() => {
         fetch(apiUrl + '/users', {
             method: 'GET',

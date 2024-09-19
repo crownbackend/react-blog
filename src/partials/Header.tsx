@@ -52,10 +52,15 @@ export default function Header() {
                         ) : null}
                         <li>
                             <details>
-                                <summary>Parent</summary>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
+                                <summary>Articles</summary>
+                                <ul className="p-3">
+                                    <li>
+                                        <Link to="/posts">Listes</Link>
+                                    </li>
+                                    <li>
+                                   
+                                        <Link to="/posts/add">Ajouter</Link>
+                                    </li>
                                 </ul>
                             </details>
                         </li>
